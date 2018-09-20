@@ -30,7 +30,6 @@ def main():
   founWordInDictionary = searchDictionary(wordDict, userSearch)
   if founWordInDictionary:
     print ("\n")
-    pass
   else:
     isSuffixMatched, rootPossibilitiesArray = suffixCheck.testSuffixes(userSearch)
     if isSuffixMatched:
