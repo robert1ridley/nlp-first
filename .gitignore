@@ -1,3 +1,4 @@
+# DS Store
 .DS_Store
 
 # pycache
@@ -5,3 +6,6 @@ __pycache__/
 
 # virtualenv
 virtual-environment/
+
+# pyc
+*.pyc
