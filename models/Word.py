@@ -5,15 +5,15 @@ class Word(object):
 
   def setWordAndTranslations(self, inBaseWord, translationArray):
     count = 0
-    translationObject = {}
     self.baseWord = inBaseWord
     for item in translationArray:
       if count % 2 == 0 or count == 0:
+        translationObject = {}
         translationObject['partOfSpeech'] = item
       else:
         translationObject['chineseTranslation'] = item
+        self.translations.append(translationObject)
       count += 1
-    self.translations.append(translationObject)
       
   def getBaseWord(self):
     return self.baseWord
