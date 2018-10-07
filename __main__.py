@@ -30,6 +30,7 @@ def main():
   founWordInDictionary = searchDictionary(wordDict, userSearch)
   if founWordInDictionary:
     print ("\n")
+    main()
   else:
     isSuffixMatched, rootPossibilitiesArray = suffixCheck.testSuffixes(userSearch)
     if isSuffixMatched:
@@ -39,6 +40,7 @@ def main():
         if matchFound:
           print("THE ABOVE MATCH WAS FOUND AFTER THE SUFFIX WAS REMOVED: " + userSearch + " --> " + possibileWord + "\n")
           isMatchFoundForRemovedSuffix = True
+          main()
       if isMatchFoundForRemovedSuffix == False:
         print ("No matches found")
     else:

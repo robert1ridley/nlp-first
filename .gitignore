@@ -9,3 +9,6 @@ virtual-environment/
 
 # pyc
 *.pyc
+
+# VsCode Settings
+.vscode
