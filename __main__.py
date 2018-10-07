@@ -1,5 +1,6 @@
 import models
 from helpers import suffixCheck
+import sys
 
 def createWordInst (englishWord, row):
   word = models.Word()
@@ -10,7 +11,7 @@ def searchDictionary(wordDictionary, searchTerm):
   dictSearch = wordDictionary.get(searchTerm, False)
   if dictSearch:
     for entry in dictSearch:
-      print ("\nChinese: " + entry['chineseTranslation'] + "\nPart Of Speech: " + entry['partOfSpeech'])
+      print ("\nEnglish Word: " + searchTerm + "\nChinese Word: " + entry['chineseTranslation'] + "\nPart Of Speech: " + entry['partOfSpeech'])
   return dictSearch
 
 def main():
@@ -26,25 +27,27 @@ def main():
     word, englishWord = createWordInst(englishWord, row)
     wordDict[word.getBaseWord()] = word.getTranslations()
 
-  userSearch = input("Enter a term to search: \n")
+  userSearch = input("\nEnter a term to search (to stop program, enter '1'): \n")
+  if userSearch == '1':
+    sys.exit()
+  isMatchFound = False
   founWordInDictionary = searchDictionary(wordDict, userSearch)
+  
+  # Check whether user-entered word is in dictionary
+  # isMatchFound if there is a match in dict
   if founWordInDictionary:
-    print ("\n")
-    main()
-  else:
-    isSuffixMatched, rootPossibilitiesArray = suffixCheck.testSuffixes(userSearch)
-    if isSuffixMatched:
-      isMatchFoundForRemovedSuffix = False
-      for possibileWord in rootPossibilitiesArray:
-        matchFound = searchDictionary(wordDict, possibileWord)
-        if matchFound:
-          print("THE ABOVE MATCH WAS FOUND AFTER THE SUFFIX WAS REMOVED: " + userSearch + " --> " + possibileWord + "\n")
-          isMatchFoundForRemovedSuffix = True
-          main()
-      if isMatchFoundForRemovedSuffix == False:
-        print ("No matches found")
-    else:
-      print ("No matches found")
+    isMatchFound = True
+  
+  # Check whether suffix removal finds dict match
+  isSuffixMatched, rootPossibilitiesArray = suffixCheck.testSuffixes(userSearch)
+  if isSuffixMatched:
+    for possibileWord in rootPossibilitiesArray:
+      matchFound = searchDictionary(wordDict, possibileWord)
+      if matchFound:
+        isMatchFound = True
+  if isMatchFound == False:
+    print ("\nNo matches found")
 
 if __name__ == "__main__":
-  main()
+  while True:
+    main()
