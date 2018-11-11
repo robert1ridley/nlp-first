@@ -11,7 +11,8 @@ def searchDictionary(wordDictionary, searchTerm):
   dictSearch = wordDictionary.get(searchTerm, False)
   if dictSearch:
     for entry in dictSearch:
-      print ("\nEnglish Word: " + searchTerm + "\nChinese Word: " + entry['chineseTranslation'] + "\nPart Of Speech: " + entry['partOfSpeech'])
+      print ("\n英语单词：" + searchTerm + "\n中文翻译：" +
+             entry['chineseTranslation'] + "\n词性：" + entry['partOfSpeech'])
   return dictSearch
 
 def main():
@@ -27,7 +28,7 @@ def main():
     word, englishWord = createWordInst(englishWord, row)
     wordDict[word.getBaseWord()] = word.getTranslations()
 
-  userSearch = input("\nEnter a term to search (to stop program, enter '1'): \n")
+  userSearch = input("\n输入一个英文单词（停止程序，输入 '1'）：\n")
   if userSearch == '1':
     sys.exit()
   isMatchFound = False
@@ -46,7 +47,7 @@ def main():
       if matchFound:
         isMatchFound = True
   if isMatchFound == False:
-    print ("\nNo matches found")
+    print ("\n没有匹配的中文单词")
 
 if __name__ == "__main__":
   while True:

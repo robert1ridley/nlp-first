@@ -12,3 +12,6 @@ virtual-environment/
 
 # VsCode Settings
 .vscode
+
+# intellij Settings
+.idea/

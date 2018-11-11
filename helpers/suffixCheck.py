@@ -38,6 +38,14 @@ def isPastTenseVerb(inWord):
     possibleRootWords.append(re.sub('d$', '', inWord))
   return possibleRootWords
 
+def isNoneRule(inWord):
+  possibleRootWords = []
+  if inWord == 'went' or inWord == 'gone':
+    possibleRootWords.append('go')
+  elif inWord == 'sat':
+    possibleRootWords.append('sit')
+  return possibleRootWords
+
 def testSuffixes(inWord):
   possibleRootWords = []
   isSuffixMatch = False
@@ -49,6 +57,9 @@ def testSuffixes(inWord):
     isSuffixMatch = True
   elif inWord.endswith('ed'):
     possibleRootWords = isPastTenseVerb(inWord)
+    isSuffixMatch = True
+  elif inWord == 'gone' or inWord == 'went' or inWord == 'sat':
+    possibleRootWords = isNoneRule(inWord)
     isSuffixMatch = True
   else:
     possibleRootWords = []
