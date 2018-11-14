@@ -4,7 +4,7 @@ This project is a dictionary lookup that will return Chinese translations and pa
 
 ## Requirements
 
-Python version: 3.5.1
+* Python version: 3.5.1
 
 ## Start Developing
 
