@@ -1,7 +1,6 @@
 # Stemmer
 
-This project is a dictionary lookup for English to Chinese words. It also includes a rule-based stemmer so that results for words
-with grammatical suffixes can also be found. For example, a search query of 'studying' will additionally return results for 'study'.
+This project is a dictionary lookup that will return Chinese translations and part-of-speech tags for English queries. The program also incorporates a rule-based stemmer so that results for words with grammatical suffixes are also be returned. For example, a search query of 'studying' will additionally return results for 'study'.
 
 ## Requirements
 
